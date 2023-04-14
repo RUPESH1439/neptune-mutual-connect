@@ -2,6 +2,7 @@ import { FunctionComponent, useState } from "react";
 import { RxLoop } from "react-icons/rx";
 import { Button, TextField } from "../UI";
 import { convertCrypto } from "@/utils";
+import WalletDetail from "../walletDetail";
 
 interface CryptoConverterProps {}
 
@@ -16,6 +17,7 @@ const CryptoConverter: FunctionComponent<CryptoConverterProps> = () => {
   const [nep, setNep] = useState<string | number>(0);
   const [busd, setBusd] = useState<string | number>(0);
   const [toggleCrypto, setToggleCrypto] = useState(false);
+  const [openWallet, setOpenWallet] = useState(false);
 
   const convertBusd = (value: string) => {
     setBusd(value);
@@ -28,44 +30,56 @@ const CryptoConverter: FunctionComponent<CryptoConverterProps> = () => {
   };
 
   return (
-    <div className={container}>
-      <span className={title}>Crypto converter</span>
-      <div className={inputContainer}>
-        <TextField
-          label={toggleCrypto ? "BUSD" : "NEP"}
-          value={toggleCrypto ? busd : nep}
-          onChange={(e) => {
-            const target = e.target as HTMLInputElement;
-            if (toggleCrypto) {
-              convertBusd(target.value);
-            } else {
-              convertNep(target.value);
-            }
-          }}
-        />
-        <button
-          className={toggleButton}
-          onClick={() => setToggleCrypto((prev) => !prev)}
-        >
-          <RxLoop size={20} />
-        </button>
-        <TextField
-          label={toggleCrypto ? "NEP" : "BUSD"}
-          value={toggleCrypto ? nep : busd}
-          onChange={(e) => {
-            const target = e.target as HTMLInputElement;
-            if (toggleCrypto) {
-              convertNep(target.value);
-            } else {
-              convertBusd(target.value);
-            }
-          }}
-        />
-        <Button variant="ghost" _className="mt-8" onClick={() => {}}>
-          Check Wallet Balance
-        </Button>
+    <>
+      <WalletDetail
+        openWalletDetail={openWallet}
+        closeWalletDetail={() => {
+          setOpenWallet(false);
+        }}
+      />
+      <div className={container}>
+        <span className={title}>Crypto converter</span>
+        <div className={inputContainer}>
+          <TextField
+            label={toggleCrypto ? "BUSD" : "NEP"}
+            value={toggleCrypto ? busd : nep}
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement;
+              if (toggleCrypto) {
+                convertBusd(target.value);
+              } else {
+                convertNep(target.value);
+              }
+            }}
+          />
+          <button
+            className={toggleButton}
+            onClick={() => setToggleCrypto((prev) => !prev)}
+          >
+            <RxLoop size={20} />
+          </button>
+          <TextField
+            label={toggleCrypto ? "NEP" : "BUSD"}
+            value={toggleCrypto ? nep : busd}
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement;
+              if (toggleCrypto) {
+                convertNep(target.value);
+              } else {
+                convertBusd(target.value);
+              }
+            }}
+          />
+          <Button
+            variant="ghost"
+            _className="mt-8"
+            onClick={() => setOpenWallet(true)}
+          >
+            Check Wallet Balance
+          </Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

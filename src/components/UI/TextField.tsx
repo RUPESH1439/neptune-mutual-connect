@@ -6,7 +6,7 @@ interface TextFieldProps extends HTMLProps<HTMLInputElement> {
 }
 
 const container = `flex flex-col gap-2`;
-const input = `h-10 w-full border border-[1.5px] border-gray-light hover:border-blue focus:border-blue rounded-md px-2`;
+const input = `h-10 w-full border border-[1.5px] border-gray-light hover:border-primary focus:border-primary rounded-md px-2`;
 const TextField: FunctionComponent<TextFieldProps> = ({
   label,
   _className,
