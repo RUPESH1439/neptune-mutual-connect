@@ -1,3 +1,4 @@
 import TextField from "./TextField";
-
-export { TextField };
+import Button from "./Button";
+import Modal from "./Modal";
+export { TextField, Button, Modal };

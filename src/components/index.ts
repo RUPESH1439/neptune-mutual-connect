@@ -1,3 +1,4 @@
 import CryptoConverter from "./cryptoConverter";
-import { TextField } from "./UI";
-export { CryptoConverter, TextField };
+import { TextField, Button } from "./UI";
+import WalletDetail from "./walletDetail";
+export { CryptoConverter, TextField, Button, WalletDetail };
