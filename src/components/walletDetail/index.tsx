@@ -50,7 +50,9 @@ const WalletDetail: FunctionComponent<WalletDetailProps> = ({
       <Button variant="primary" onClick={connect}>
         Connect
       </Button>
-      <Button variant="outlined">Cancel</Button>
+      <Button variant="outlined" onClick={closeWalletDetail}>
+        Cancel
+      </Button>
     </div>
   );
 
