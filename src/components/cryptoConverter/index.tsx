@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { RxLoop } from "react-icons/rx";
-import { TextField } from "../UI";
+import { Button, TextField } from "../UI";
 import { convertCrypto } from "@/utils";
 
 interface CryptoConverterProps {}
@@ -61,6 +61,9 @@ const CryptoConverter: FunctionComponent<CryptoConverterProps> = () => {
             }
           }}
         />
+        <Button variant="ghost" _className="mt-8" onClick={() => {}}>
+          Check Wallet Balance
+        </Button>
       </div>
     </div>
   );
